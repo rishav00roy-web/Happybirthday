@@ -101,22 +101,16 @@
         var foot = tree.footer;
         var hold = 1;
 
-        canvas.click(function(e) {
+        function startGrow() {
+            if (!hold) return;
             playAudio();
-            var offset = canvas.offset(), x, y, scale = currentScale;
-            x = (e.pageX - offset.left) / scale;
-            y = (e.pageY - offset.top) / scale;
-            if (seed.hover(x, y)) {
-                hold = 0;
-                canvas.unbind("click");
-                canvas.unbind("mousemove");
-                canvas.removeClass('hand');
-            }
-        }).mousemove(function(e) {
-            var offset = canvas.offset(), x, y, scale = currentScale;
-            x = (e.pageX - offset.left) / scale;
-            y = (e.pageY - offset.top) / scale;
-            canvas.toggleClass('hand', seed.hover(x, y));
+            hold = 0;
+            canvas.unbind("click touchend");
+            canvas.unbind("mousemove");
+            canvas.removeClass('hand');
+        }
+        canvas.on("click touchend", startGrow).mousemove(function() {
+            canvas.addClass('hand');
         });
 
         var seedAnimate = eval(Jscex.compile("async", function () {
