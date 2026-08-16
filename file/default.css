@@ -1,12 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
 body {
   margin: 0;
   padding: 0;
-  background-color: #000; /* solid black background, images removed */
+  /* Romantic dark gradient background */
+  background: radial-gradient(circle at center, #2a0815 0%, #000000 100%);
   color: white;
   font-size: 14px;
-  font-family: sans-serif;
+  font-family: 'Playfair Display', serif;
   overflow: auto;
+  position: relative;
 }
+
+/* Add subtle floating stars in the background */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: 
+    radial-gradient(1.5px 1.5px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(1.5px 1.5px at 40px 70px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 90px 40px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 160px 120px, #ffb4a8, rgba(0,0,0,0));
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  opacity: 0.3;
+  animation: twinkle 5s infinite alternate;
+  z-index: -1;
+  pointer-events: none;
+}
+
+@keyframes twinkle {
+  0% { opacity: 0.2; }
+  100% { opacity: 0.6; }
+}
+
 a {
   color: white;
   font-size: 14px;
@@ -34,12 +62,18 @@ a {
 }
 #code {
   display: none;
-  color: rgb(196, 255, 255);
-  font-size: 16px;
+  color: #ffe6eb;
+  font-size: 20px;
   margin-top: 70px;
-  line-height: 25px;
-  font-size: larger;
-  font-weight: bolder;
+  line-height: 32px;
+  font-weight: 500;
+  text-shadow: 0 0 10px rgba(255, 180, 168, 0.4);
+  animation: pulse-text 3s infinite alternate;
+}
+
+@keyframes pulse-text {
+  0% { text-shadow: 0 0 8px rgba(255, 180, 168, 0.3); }
+  100% { text-shadow: 0 0 16px rgba(255, 180, 168, 0.7); }
 }
 #clock-box {
   position: absolute;
