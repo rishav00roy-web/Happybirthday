@@ -115,6 +115,11 @@ a {
 .say {
   margin-left: 5px;
 }
+.highlight {
+  color: #ff4d79;
+  font-weight: 700;
+  text-shadow: 0 0 12px rgba(255, 77, 121, 0.9);
+}
 .space {
   margin-right: 150px;
 }
