@@ -2,6 +2,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>HBD love</title>	    
     <link type="text/css" rel="stylesheet" href="file/default.css">
     <script type="text/javascript" src="file/jquery.min.js"></script>
@@ -177,6 +178,26 @@
         }));
 
         runAsync().start();
+
+        // Responsive scaling for mobile devices (iOS, OnePlus, etc.)
+        function adjustScale() {
+            var wrap = document.getElementById('wrap');
+            var windowWidth = window.innerWidth;
+            if (windowWidth < 1100) {
+                var scale = windowWidth / 1100;
+                wrap.style.transform = 'scale(' + scale + ')';
+                wrap.style.transformOrigin = 'top center';
+                
+                // Adjust #main height to prevent extra whitespace at bottom
+                var main = document.getElementById('main');
+                main.style.height = (680 * scale + 50) + 'px';
+            } else {
+                wrap.style.transform = 'none';
+                document.getElementById('main').style.height = 'auto';
+            }
+        }
+        window.addEventListener('resize', adjustScale);
+        adjustScale();
     })();
     </script>
 </body>
