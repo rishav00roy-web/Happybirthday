@@ -15,6 +15,12 @@ body {
   font-family: 'Dancing Script', cursive;
   overflow: auto;
   position: relative;
+  animation: fadeIn 1.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 /* Add subtle floating stars in the background */
