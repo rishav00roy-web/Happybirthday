@@ -111,17 +111,9 @@
 
         var seedAnimate = eval(Jscex.compile("async", function () {
             seed.draw();
-            var baseHeartScale = seed.heart.scale, pulseT = 0;
             while (hold) {
-                pulseT += 0.15;
-                seed.clear();
-                seed.heart.scale = baseHeartScale * (1 + Math.sin(pulseT) * 0.08);
-                seed.draw();
-                $await(Jscex.Async.sleep(30));
+                $await(Jscex.Async.sleep(6));
             }
-            seed.heart.scale = baseHeartScale;
-            seed.clear();
-            seed.draw();
             while (seed.canScale()) {
                 seed.scale(0.95);
                 $await(Jscex.Async.sleep(6));
